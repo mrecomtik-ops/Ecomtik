@@ -142,3 +142,78 @@
     color: var(--color-foreground);
   }
 }
+
+/* ---------------- Ecomtik brand system ---------------- */
+@theme inline {
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+  --color-slate-dark: var(--slate-dark);
+  --color-brand: var(--brand);
+  --color-brand-amber: var(--brand-amber);
+  --color-cobalt: var(--cobalt);
+  --color-warm: var(--warm);
+  --color-softgray: var(--softgray);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --ink: oklch(0.145 0 0);
+  --graphite: oklch(0.222 0 0);
+  --slate-dark: oklch(0.292 0 0);
+  --brand: oklch(0.703 0.184 51.5);
+  --brand-amber: oklch(0.808 0.163 72.5);
+  --cobalt: oklch(0.548 0.238 265.4);
+  --warm: oklch(0.972 0.008 91.5);
+  --softgray: oklch(0.955 0.003 91);
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.703 0.184 51.5);
+  --primary-foreground: oklch(0.145 0 0);
+  --secondary: var(--softgray);
+  --secondary-foreground: oklch(0.222 0 0);
+  --muted: var(--softgray);
+  --muted-foreground: oklch(0.52 0 0);
+  --accent: var(--warm);
+  --accent-foreground: oklch(0.222 0 0);
+  --border: oklch(0.912 0 0);
+  --input: oklch(0.912 0 0);
+  --ring: oklch(0.703 0.184 51.5);
+  --radius: 0.9rem;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+}
+
+@utility glass-dark {
+  background: color-mix(in oklab, var(--graphite) 82%, transparent);
+  backdrop-filter: blur(18px);
+  border: 1px solid color-mix(in oklab, white 10%, transparent);
+}
+
+@utility glass-light {
+  background: color-mix(in oklab, white 78%, transparent);
+  backdrop-filter: blur(14px);
+  border: 1px solid color-mix(in oklab, var(--ink) 8%, transparent);
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
