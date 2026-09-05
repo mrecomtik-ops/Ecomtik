@@ -13,8 +13,10 @@ import { GlobalExpansion } from "@/components/site/GlobalExpansion";
 import { DubaiStrategy } from "@/components/site/DubaiStrategy";
 import { BrandFactory } from "@/components/site/BrandFactory";
 import { CaseStudies } from "@/components/site/CaseStudies";
+import { Contact } from "@/components/site/Contact";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 
 const TITLE = "Ecomtik | Global Ecommerce Growth & Business Expansion";
 const DESCRIPTION =
@@ -51,9 +53,11 @@ function Index() {
         <BrandFactory />
         <WhyEcomtik />
         <CaseStudies />
+        <Contact />
         <FinalCTA />
       </main>
       <SiteFooter />
+      <WhatsAppButton />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 
 export function FinalCTA() {
   return (
-    <section id="contact" className="bg-graphite py-20 lg:py-28">
+    <section className="bg-graphite py-20 lg:py-28">
       <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
         <Reveal>
           <div className="relative overflow-hidden rounded-[30px] bg-ink">
@@ -33,7 +33,7 @@ export function FinalCTA() {
 
               <div className="mt-9 flex flex-wrap gap-4">
                 <a
-                  href="mailto:hello@ecomtik.com"
+                  href="mailto:mr.ecomtik@gmail.com"
                   className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-amber"
                 >
                   Start Growing
