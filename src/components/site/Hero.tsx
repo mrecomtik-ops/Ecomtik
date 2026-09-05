@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { IMAGES } from "@/lib/site-assets";
 
-const TRUST = ["Global Ecommerce", "Brand Development", "International Expansion"];
+const TRUST = ["Amazon Growth", "Brand Building", "Global Marketplace Expansion"];
 
 export function Hero() {
   return (
