@@ -29,7 +29,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <img src={IMAGES.logo} alt="Ecomtik" className="h-9 w-auto" loading="lazy" />
+            <img src={IMAGES.logo} alt="Ecomtik" className="h-14 w-auto" loading="lazy" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/55">
               A Dubai-based ecommerce growth and brand-building agency helping businesses create
               brands, launch products, and scale across international marketplaces.
