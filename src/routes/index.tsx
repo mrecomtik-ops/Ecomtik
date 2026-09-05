@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { Hero } from "@/components/site/Hero";
+import { Journey } from "@/components/site/Journey";
+import { ProductSourcing } from "@/components/site/ProductSourcing";
+import { BusinessSetup } from "@/components/site/BusinessSetup";
+import { WhyEcomtik } from "@/components/site/WhyEcomtik";
 import { Services } from "@/components/site/Services";
 import { BrandBuilding } from "@/components/site/BrandBuilding";
 import { AmazonGrowth } from "@/components/site/AmazonGrowth";
@@ -12,9 +16,9 @@ import { CaseStudies } from "@/components/site/CaseStudies";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-const TITLE = "Ecomtik | Dubai Ecommerce Growth & Brand Building Agency";
+const TITLE = "Ecomtik | Global Ecommerce Growth & Business Expansion";
 const DESCRIPTION =
-  "Ecomtik is a Dubai-based ecommerce growth agency building brands, launching products and scaling businesses across international marketplaces.";
+  "Ecomtik is a global ecommerce growth and business expansion company headquartered in Dubai — product sourcing, brand creation, marketplace scaling and UAE company formation.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,12 +40,16 @@ function Index() {
       <SiteHeader />
       <main>
         <Hero />
+        <Journey />
         <Services />
         <BrandBuilding />
+        <ProductSourcing />
+        <BusinessSetup />
         <AmazonGrowth />
         <GlobalExpansion />
         <DubaiStrategy />
         <BrandFactory />
+        <WhyEcomtik />
         <CaseStudies />
         <FinalCTA />
       </main>
