@@ -31,7 +31,7 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6 lg:px-10">
         <a href="#home" className="flex items-center" aria-label="Ecomtik home">
-          <img src={IMAGES.logo} alt="Ecomtik" className="h-9 w-auto" />
+          <img src={IMAGES.logo} alt="Ecomtik" className="h-12 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-8 xl:flex">
