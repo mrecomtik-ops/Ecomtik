@@ -7,34 +7,35 @@ export function Hero() {
   return (
     <section id="home" className="relative mt-20 min-h-[calc(100svh-5rem)] w-full overflow-hidden bg-ink">
       <img
-        src={IMAGES.commandCenter}
-        alt="Global commerce command centre"
+        src={IMAGES.heroGrowth}
+        alt="AI-powered ecommerce growth engine with global marketplace intelligence"
         fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/60 to-ink/95" />
-      <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_20%_50%,color-mix(in_oklab,var(--ink)_75%,transparent),transparent_70%)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/70 to-ink/25" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent to-ink/90" />
 
       <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-[1280px] flex-col justify-center px-6 py-20 lg:px-10">
-        <div className="animate-in fade-in slide-in-from-bottom-6 max-w-3xl duration-1000">
+        <div className="animate-in fade-in slide-in-from-bottom-6 max-w-2xl duration-1000">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold tracking-[0.18em] text-white/85 uppercase backdrop-blur-md">
             <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-            Global Commerce Growth · Headquartered in Dubai
+            Amazon Growth Partner · Headquartered in Dubai
           </span>
 
-          <h1 className="font-display mt-8 text-[2.6rem] leading-[1.04] font-semibold text-white sm:text-6xl lg:text-[4.5rem]">
-            Build Globally.
+          <h1 className="font-display mt-8 text-[2.6rem] leading-[1.04] font-semibold text-white sm:text-6xl lg:text-[4.25rem]">
+            Scale Your Brand
             <br />
-            Scale Intelligently.
+            On Amazon.
             <br />
             <span className="bg-gradient-to-r from-brand to-brand-amber bg-clip-text text-transparent">
-              Grow Without Limits.
+              Grow Globally With Confidence.
             </span>
           </h1>
 
-          <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
-            From product sourcing and brand creation to ecommerce growth and global expansion,
-            Ecomtik helps businesses transform ideas into international brands.
+          <p className="mt-7 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+            From product sourcing and brand creation to Amazon launch, optimization, and global
+            marketplace expansion, Ecomtik helps brands build profitable ecommerce businesses
+            worldwide.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -42,7 +43,7 @@ export function Hero() {
               href="#contact"
               className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-ink shadow-[0_18px_45px_-18px_color-mix(in_oklab,var(--brand)_90%,transparent)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-amber"
             >
-              Start Your Growth Journey
+              Grow On Amazon
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <a
