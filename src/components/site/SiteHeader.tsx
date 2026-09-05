@@ -5,8 +5,9 @@ import { IMAGES } from "@/lib/site-assets";
 const NAV = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
+  { label: "Sourcing", href: "#sourcing" },
   { label: "Solutions", href: "#solutions" },
-  { label: "Amazon Growth", href: "#amazon-growth" },
+  { label: "Growth", href: "#amazon-growth" },
   { label: "Case Studies", href: "#case-studies" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
@@ -27,6 +28,8 @@ export function SiteHeader() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled ? "glass-light shadow-[0_1px_30px_-12px_rgba(8,8,8,0.25)]" : "bg-transparent"
+      } ${
+        scrolled ? "text-graphite" : "text-white"
       }`}
     >
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6 lg:px-10">
@@ -39,7 +42,7 @@ export function SiteHeader() {
             <a
               key={item.label}
               href={item.href}
-              className="relative text-[13px] font-medium tracking-wide text-graphite/80 transition-colors hover:text-ink after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-brand after:transition-all after:duration-300 hover:after:w-full"
+              className={`relative text-[13px] font-medium tracking-wide transition-colors ${scrolled ? "text-graphite/80 hover:text-ink" : "text-white/85 hover:text-white"} after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-brand after:transition-all after:duration-300 hover:after:w-full`}
             >
               {item.label}
             </a>
@@ -57,7 +60,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle navigation"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-ink xl:hidden"
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-full border xl:hidden ${scrolled ? "border-border text-ink" : "border-white/30 text-white"}`}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>

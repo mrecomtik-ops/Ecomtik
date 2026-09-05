@@ -3,8 +3,8 @@ import { Reveal } from "./Reveal";
 
 const STEPS = [
   { title: "Research", copy: "Category economics, demand signals, and white space." },
-  { title: "Strategy", copy: "Positioning, portfolio, and margin architecture." },
-  { title: "Creation", copy: "Identity, packaging, content, and storefront build." },
+  { title: "Source", copy: "Suppliers, sampling, and manufacturing economics." },
+  { title: "Create", copy: "Identity, packaging, content, and storefront build." },
   { title: "Launch", copy: "Coordinated marketplace and channel go-live." },
   { title: "Scale", copy: "Media, expansion, and profitability compounding." },
 ];
