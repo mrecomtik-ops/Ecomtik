@@ -6,7 +6,7 @@ const NAV = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
   { label: "Sourcing", href: "#sourcing" },
-  { label: "Solutions", href: "#solutions" },
+  { label: "Formation", href: "#formation" },
   { label: "Growth", href: "#amazon-growth" },
   { label: "Case Studies", href: "#case-studies" },
   { label: "About", href: "#about" },
@@ -20,7 +20,7 @@ export function SiteHeader() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-black/[0.06] bg-warm/95 shadow-[0_1px_30px_-12px_rgba(8,8,8,0.12)] backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6 lg:px-10">
         <a href="#home" className="flex items-center" aria-label="Ecomtik home">
-          <img src={IMAGES.logo} alt="Ecomtik" className="h-12 w-auto" />
+          <img src={IMAGES.logo} alt="Ecomtik" className="h-14 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-8 xl:flex">
