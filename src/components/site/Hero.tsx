@@ -5,7 +5,7 @@ const TRUST = ["Global Ecommerce", "Brand Development", "International Expansion
 
 export function Hero() {
   return (
-    <section id="home" className="relative min-h-[100svh] w-full overflow-hidden bg-ink">
+    <section id="home" className="relative mt-20 min-h-[calc(100svh-5rem)] w-full overflow-hidden bg-ink">
       <img
         src={IMAGES.commandCenter}
         alt="Global commerce command centre"
@@ -15,7 +15,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/60 to-ink/95" />
       <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_20%_50%,color-mix(in_oklab,var(--ink)_75%,transparent),transparent_70%)]" />
 
-      <div className="relative mx-auto flex min-h-[100svh] max-w-[1280px] flex-col justify-center px-6 pt-32 pb-20 lg:px-10">
+      <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-[1280px] flex-col justify-center px-6 py-20 lg:px-10">
         <div className="animate-in fade-in slide-in-from-bottom-6 max-w-3xl duration-1000">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold tracking-[0.18em] text-white/85 uppercase backdrop-blur-md">
             <span className="h-1.5 w-1.5 rounded-full bg-brand" />

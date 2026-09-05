@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { IMAGES } from "@/lib/site-assets";
 
@@ -14,24 +14,10 @@ const NAV = [
 ];
 
 export function SiteHeader() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-light shadow-[0_1px_30px_-12px_rgba(8,8,8,0.25)]" : "bg-transparent"
-      } ${
-        scrolled ? "text-graphite" : "text-white"
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-black/[0.06] bg-warm/95 shadow-[0_1px_30px_-12px_rgba(8,8,8,0.12)] backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6 lg:px-10">
         <a href="#home" className="flex items-center" aria-label="Ecomtik home">
           <img src={IMAGES.logo} alt="Ecomtik" className="h-12 w-auto" />
@@ -42,7 +28,7 @@ export function SiteHeader() {
             <a
               key={item.label}
               href={item.href}
-              className={`relative text-[13px] font-medium tracking-wide transition-colors ${scrolled ? "text-graphite/80 hover:text-ink" : "text-white/85 hover:text-white"} after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-brand after:transition-all after:duration-300 hover:after:w-full`}
+              className="relative text-[13px] font-medium tracking-wide text-graphite/80 transition-colors hover:text-ink after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-brand after:transition-all after:duration-300 hover:after:w-full"
             >
               {item.label}
             </a>
@@ -60,7 +46,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle navigation"
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-full border xl:hidden ${scrolled ? "border-border text-ink" : "border-white/30 text-white"}`}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-ink xl:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -68,7 +54,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="glass-light border-t border-border xl:hidden">
+        <div className="border-t border-border bg-warm xl:hidden">
           <nav className="mx-auto flex max-w-[1280px] flex-col px-6 py-4">
             {NAV.map((item) => (
               <a
