@@ -1,83 +1,65 @@
 import { ArrowRight } from "lucide-react";
 import { IMAGES } from "@/lib/site-assets";
 
-const TRUST = ["Brand Strategy", "Global Expansion", "Marketplace Growth"];
+const TRUST = ["Global Ecommerce", "Brand Development", "International Expansion"];
 
 export function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden bg-warm">
-      <div className="mx-auto grid max-w-[1280px] items-center gap-16 px-6 pt-32 pb-20 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-10 lg:pt-44 lg:pb-28">
-        <div className="max-w-xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-4 py-2 text-[11px] font-semibold tracking-[0.18em] text-graphite uppercase">
+    <section id="home" className="relative min-h-[100svh] w-full overflow-hidden bg-ink">
+      <img
+        src={IMAGES.commandCenter}
+        alt="Global commerce command centre"
+        fetchPriority="high"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/60 to-ink/95" />
+      <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_20%_50%,color-mix(in_oklab,var(--ink)_75%,transparent),transparent_70%)]" />
+
+      <div className="relative mx-auto flex min-h-[100svh] max-w-[1280px] flex-col justify-center px-6 pt-32 pb-20 lg:px-10">
+        <div className="animate-in fade-in slide-in-from-bottom-6 max-w-3xl duration-1000">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold tracking-[0.18em] text-white/85 uppercase backdrop-blur-md">
             <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-            Dubai · Global Ecommerce Growth
+            Global Commerce Growth · Headquartered in Dubai
           </span>
 
-          <h1 className="mt-7 text-[2.75rem] leading-[1.03] font-semibold text-ink sm:text-6xl lg:text-[4.25rem]">
-            Build Brands.
+          <h1 className="font-display mt-8 text-[2.6rem] leading-[1.04] font-semibold text-white sm:text-6xl lg:text-[4.5rem]">
+            Build Globally.
             <br />
-            Scale Globally.
+            Scale Intelligently.
             <br />
             <span className="bg-gradient-to-r from-brand to-brand-amber bg-clip-text text-transparent">
-              Grow Intelligently.
+              Grow Without Limits.
             </span>
           </h1>
 
-          <p className="mt-7 text-base leading-relaxed text-graphite/75 sm:text-lg">
-            Ecomtik is a Dubai-based ecommerce growth and brand-building partner. We create
-            brands from first principles, launch products with precision, and scale them
-            profitably across international marketplaces.
+          <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
+            From product sourcing and brand creation to ecommerce growth and global expansion,
+            Ecomtik helps businesses transform ideas into international brands.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
               className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-ink shadow-[0_18px_45px_-18px_color-mix(in_oklab,var(--brand)_90%,transparent)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-amber"
             >
-              Start Growing
+              Start Your Growth Journey
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <a
-              href="#case-studies"
-              className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-7 py-4 text-sm font-semibold text-ink transition-all duration-300 hover:border-ink/40 hover:bg-white"
+              href="#services"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-white/60 hover:bg-white/10"
             >
-              View Case Studies
+              Explore Our Solutions
             </a>
           </div>
 
-          <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-ink/10 pt-7">
+          <div className="mt-14 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/15 pt-7">
             {TRUST.map((t) => (
               <div key={t} className="flex items-center gap-2.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-cobalt" />
-                <span className="text-[13px] font-medium tracking-wide text-graphite">{t}</span>
+                <span className="text-[13px] font-medium tracking-wide text-white/80">{t}</span>
               </div>
             ))}
-          </div>
-        </div>
-
-        <div className="relative">
-          <div className="absolute -inset-10 -z-10 rounded-full bg-brand/15 blur-3xl" />
-          <div className="glass-dark animate-in fade-in slide-in-from-bottom-6 overflow-hidden rounded-[28px] p-3 shadow-[0_50px_100px_-40px_rgba(8,8,8,0.65)] duration-1000 lg:rotate-[0.6deg] lg:transition-transform lg:duration-700 lg:hover:rotate-0">
-            <img
-              src={IMAGES.commandCenter}
-              alt="Global commerce intelligence dashboard visual"
-              width={1200}
-              height={900}
-              className="w-full rounded-[20px] object-cover"
-            />
-          </div>
-
-          <div className="glass-dark absolute -bottom-8 -left-4 hidden rounded-2xl px-6 py-5 text-white shadow-[0_30px_60px_-30px_rgba(8,8,8,0.8)] sm:block">
-            <p className="text-[10px] font-semibold tracking-[0.2em] text-white/55 uppercase">
-              Marketplaces served
-            </p>
-            <p className="font-display mt-1 text-3xl font-semibold">21+</p>
-          </div>
-          <div className="glass-dark absolute -top-6 right-2 hidden rounded-2xl px-6 py-5 text-white shadow-[0_30px_60px_-30px_rgba(8,8,8,0.8)] lg:block">
-            <p className="text-[10px] font-semibold tracking-[0.2em] text-white/55 uppercase">
-              Avg. revenue lift
-            </p>
-            <p className="font-display mt-1 text-3xl font-semibold text-brand-amber">3.4x</p>
           </div>
         </div>
       </div>
