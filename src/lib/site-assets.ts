@@ -3,7 +3,7 @@ const img = (name: string) => `/images/${encodeURIComponent(name)}`;
 export const IMAGES = {
   logo: img("ecomtik.png"),
   commandCenter: img("GLOBAL COMMERCE COMMAND CENTER.jpg"),
-  logoDesign: img("LOGO DESIGN & BRAND ARCHITECTURE.jpg"),
+  logoDesign: img("LOGO DESIGN AND BRAND ARCHITECTURE.jpg"),
   webDesign: img("HIGH-CONVERTING WEBSITE DESIGN.jpg"),
   packaging: img("PRODUCT PACKAGING DESIGN SERVICE.jpg"),
   marketing: img("DIGITAL MARKETING SERVICE.jpg"),
