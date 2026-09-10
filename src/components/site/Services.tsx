@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import {
   Fingerprint,
   Package,
@@ -19,6 +20,7 @@ type Service = {
   points: string[];
   icon: typeof Fingerprint;
   image?: string;
+  to: string;
 };
 
 type Category = {
@@ -36,6 +38,7 @@ const CATEGORIES: Category[] = [
         points: ["Brand positioning", "Visual identity", "Logo systems", "Market differentiation"],
         icon: Fingerprint,
         image: IMAGES.logoDesign,
+        to: "/services/logo-design",
       },
       {
         title: "Product Packaging Design",
@@ -43,6 +46,7 @@ const CATEGORIES: Category[] = [
         points: ["Premium packaging", "Product presentation", "Retail-ready designs"],
         icon: Package,
         image: IMAGES.packaging,
+        to: "/services/product-packaging-design",
       },
       {
         title: "Product Sourcing & Private Label",
@@ -56,6 +60,7 @@ const CATEGORIES: Category[] = [
           "Global procurement",
         ],
         icon: Globe2,
+        to: "/services/amazon-product-sourcing",
       },
     ],
   },
@@ -73,6 +78,7 @@ const CATEGORIES: Category[] = [
         ],
         icon: TrendingUp,
         image: IMAGES.amazonPathway,
+        to: "/services/amazon-account-management",
       },
       {
         title: "Digital Marketing & Performance Growth",
@@ -80,6 +86,7 @@ const CATEGORIES: Category[] = [
         points: ["Paid advertising", "SEO", "Content strategy", "Customer acquisition"],
         icon: Megaphone,
         image: IMAGES.marketing,
+        to: "/services/digital-marketing",
       },
       {
         title: "High-Converting Website Development",
@@ -92,6 +99,7 @@ const CATEGORIES: Category[] = [
         ],
         icon: MonitorSmartphone,
         image: IMAGES.webDesign,
+        to: "/services/website-design",
       },
     ],
   },
@@ -104,6 +112,7 @@ const CATEGORIES: Category[] = [
         points: ["UAE company registration", "Business setup guidance", "Entrepreneur support"],
         icon: Building2,
         image: IMAGES.uaeSetup,
+        to: "/services/company-setup",
       },
       {
         title: "LLC Formation & Trade License",
@@ -116,6 +125,7 @@ const CATEGORIES: Category[] = [
           "Business documentation support",
         ],
         icon: FileBadge,
+        to: "/services/company-setup",
       },
       {
         title: "Global Marketplace Expansion",
@@ -128,6 +138,7 @@ const CATEGORIES: Category[] = [
         ],
         icon: Network,
         image: IMAGES.globalNetwork,
+        to: "/services/global-marketplace-expansion",
       },
     ],
   },
@@ -172,13 +183,13 @@ function ServiceCard({ service }: { service: Service }) {
             </li>
           ))}
         </ul>
-        <a
-          href="#contact"
+        <Link
+          to={service.to}
           className="mt-auto inline-flex items-center gap-2 pt-6 text-[13px] font-semibold text-brand transition-colors hover:text-brand-amber"
         >
           Learn more
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-        </a>
+        </Link>
       </div>
     </article>
   );

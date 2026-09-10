@@ -1,8 +1,23 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { IMAGES } from "@/lib/site-assets";
 import { Reveal } from "./Reveal";
 
-export function FinalCTA() {
+export function FinalCTA({
+  eyebrow = "Command your upward trajectory",
+  title = "Let's build the brand your category hasn't seen yet.",
+  copy = "Share where you are today and we'll come back with a candid view of the opportunity, the sequence, and what it takes to win.",
+  primaryLabel = "Start Growing",
+  secondaryLabel = "Explore Services",
+  secondaryTo = "/services",
+}: {
+  eyebrow?: string;
+  title?: string;
+  copy?: string;
+  primaryLabel?: string;
+  secondaryLabel?: string;
+  secondaryTo?: string;
+}) {
   return (
     <section className="bg-graphite py-20 lg:py-28">
       <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
@@ -21,30 +36,27 @@ export function FinalCTA() {
 
             <div className="relative max-w-2xl px-8 py-16 sm:px-14 lg:px-16 lg:py-24">
               <span className="text-[11px] font-semibold tracking-[0.22em] text-brand-amber uppercase">
-                Command your upward trajectory
+                {eyebrow}
               </span>
               <h2 className="mt-5 text-3xl font-semibold text-white sm:text-4xl lg:text-5xl lg:leading-tight">
-                Let's build the brand your category hasn't seen yet.
+                {title}
               </h2>
-              <p className="mt-5 text-base leading-relaxed text-white/65">
-                Share where you are today and we'll come back with a candid view of the
-                opportunity, the sequence, and what it takes to win.
-              </p>
+              <p className="mt-5 text-base leading-relaxed text-white/65">{copy}</p>
 
               <div className="mt-9 flex flex-wrap gap-4">
-                <a
-                  href="mailto:mr.ecomtik@gmail.com"
+                <Link
+                  to="/contact"
                   className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-amber"
                 >
-                  Start Growing
+                  {primaryLabel}
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-                <a
-                  href="#services"
+                </Link>
+                <Link
+                  to={secondaryTo}
                   className="inline-flex items-center rounded-full border border-white/25 px-7 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:bg-white/10"
                 >
-                  Explore Services
-                </a>
+                  {secondaryLabel}
+                </Link>
               </div>
             </div>
           </div>

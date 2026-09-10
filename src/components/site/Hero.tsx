@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { IMAGES } from "@/lib/site-assets";
 
@@ -5,7 +6,7 @@ const TRUST = ["Amazon Growth", "Brand Building", "Global Marketplace Expansion"
 
 export function Hero() {
   return (
-    <section id="home" className="relative mt-20 min-h-[calc(100svh-5rem)] w-full overflow-hidden bg-ink">
+    <section id="home" className="relative mt-24 min-h-[calc(100svh-6rem)] w-full overflow-hidden bg-ink">
       <img
         src={IMAGES.heroGrowth}
         alt="AI-powered ecommerce growth engine with global marketplace intelligence"
@@ -15,7 +16,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/70 to-ink/25" />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent to-ink/90" />
 
-      <div className="relative mx-auto flex min-h-[calc(100svh-5rem)] max-w-[1280px] flex-col justify-center px-6 py-20 lg:px-10">
+      <div className="relative mx-auto flex min-h-[calc(100svh-6rem)] max-w-[1280px] flex-col justify-center px-6 py-20 lg:px-10">
         <div className="animate-in fade-in slide-in-from-bottom-6 max-w-2xl duration-1000">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold tracking-[0.18em] text-white/85 uppercase backdrop-blur-md">
             <span className="h-1.5 w-1.5 rounded-full bg-brand" />
@@ -39,19 +40,19 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-ink shadow-[0_18px_45px_-18px_color-mix(in_oklab,var(--brand)_90%,transparent)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-amber"
             >
               Grow On Amazon
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              to="/services"
               className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-white/60 hover:bg-white/10"
             >
               Explore Our Solutions
-            </a>
+            </Link>
           </div>
 
           <div className="mt-14 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/15 pt-7">
