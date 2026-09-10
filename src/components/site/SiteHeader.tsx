@@ -35,7 +35,7 @@ export function SiteHeader() {
               to={item.to}
               {...("exact" in item && item.exact ? { activeOptions: { exact: true } } : {})}
               activeProps={{ className: "text-ink after:w-full" }}
-              className="relative text-[13px] font-bold tracking-wide text-graphite/80 transition-colors hover:text-ink after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-brand after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-base font-bold tracking-wide text-graphite/80 transition-colors hover:text-ink after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-brand after:transition-all after:duration-300 hover:after:w-full"
             >
               {item.label}
             </Link>
@@ -70,7 +70,7 @@ export function SiteHeader() {
                 to={item.to}
                 {...("exact" in item && item.exact ? { activeOptions: { exact: true } } : {})}
                 activeProps={{ className: "text-brand" }}
-                className="border-b border-border/60 py-3.5 text-sm font-bold text-graphite last:border-0"
+                className="border-b border-border/60 py-3.5 text-base font-bold text-graphite last:border-0"
               >
                 {item.label}
               </Link>
