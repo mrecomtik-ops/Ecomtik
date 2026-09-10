@@ -3,6 +3,7 @@ import { ArrowRight, Mail, MessageCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { submitContact, type ContactSubmission } from "@/lib/contact-server-fn";
 import { getPublishedRecords } from "@/content/registry";
+import { trackEvent } from "@/lib/analytics";
 
 const EMAIL = "mr.ecomtik@gmail.com";
 const WHATSAPP = "971561677408";
@@ -47,6 +48,9 @@ export function Contact() {
     try {
       const result = await submitContact({ data: payload });
       setState(result.ok ? "success" : "error");
+      // Lead event fires only on a durably-accepted enquiry — no name/email/
+      // message/phone in the event params, per the no-PII-in-analytics rule.
+      if (result.ok) trackEvent("generate_lead");
     } catch {
       setState("error");
     }

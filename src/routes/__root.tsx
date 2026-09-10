@@ -8,14 +8,17 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { trackEvent } from "@/lib/analytics";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { JsonLd, ORGANIZATION_JSON_LD } from "@/components/site/JsonLd";
+
+const GA_MEASUREMENT_ID = "G-C33SDCHS6X";
 
 function NotFoundComponent() {
   return (
@@ -118,6 +121,16 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        {/* Google tag (gtag.js) — must stay immediately after <head>, one tag per page. */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`,
+          }}
+        />
         <HeadContent />
       </head>
       <body>
@@ -131,12 +144,21 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isFirstRender = useRef(true);
 
   // Always land at the top of a freshly navigated page.
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    if (typeof window === "undefined") return;
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+
+    // gtag's initial `config` call (in RootShell's <head>) already sends the
+    // first page_view. Client-side route changes need a manual event, since
+    // the router never triggers a full page load for gtag to notice.
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
     }
+    trackEvent("page_view", { page_path: pathname, page_title: document.title });
   }, [pathname]);
 
   return (
