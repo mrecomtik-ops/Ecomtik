@@ -1,6 +1,25 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, MessageCircle } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, MessageCircle } from "lucide-react";
 import { IMAGES } from "@/lib/site-assets";
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M16.6 5.82c-.9-.98-1.4-2.26-1.4-3.57h-3.06v14.3c0 1.5-1.22 2.72-2.72 2.72a2.72 2.72 0 0 1 0-5.44c.27 0 .53.04.78.11V10.9a5.79 5.79 0 0 0-.78-.05 5.78 5.78 0 1 0 5.78 5.78V9.2a8.83 8.83 0 0 0 5.15 1.65V7.79a5.82 5.82 0 0 1-3.75-1.97Z" />
+    </svg>
+  );
+}
+
+const SOCIAL_LINKS = [
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61591697604837", Icon: Facebook },
+  { label: "Instagram", href: "https://www.instagram.com/ecomtik/", Icon: Instagram },
+  { label: "TikTok", href: "https://www.tiktok.com/@ecomtikservices", Icon: TikTokIcon },
+] as const;
 
 const NAV = [
   { label: "Home", to: "/" },
@@ -46,6 +65,18 @@ export function SiteFooter() {
               marketplaces.
             </p>
             <div className="mt-6 flex gap-3">
+              {SOCIAL_LINKS.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-white/70 transition-colors hover:border-brand hover:text-brand"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
