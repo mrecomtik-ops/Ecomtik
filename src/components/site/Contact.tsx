@@ -216,8 +216,8 @@ export function Contact() {
                     >
                       <option value="">Not sure yet</option>
                       {services.map((s) => (
-                        <option key={s.metadata.id} value={s.metadata.h1}>
-                          {s.metadata.h1}
+                        <option key={s.metadata.id} value={s.metadata.id}>
+                          {s.metadata.title.replace(/\s*\|\s*Ecomtik$/, "")}
                         </option>
                       ))}
                     </select>

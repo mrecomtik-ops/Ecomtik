@@ -1,6 +1,30 @@
 # Ecomtik implementation status
 
-Source spec: `Ecomtik-React-Claude-Master-Update.md` (dated 10 September 2026). This covers **Phase A only** — content infrastructure — of a larger phased rollout. See "Deployment and follow-up" for what's next.
+Source spec: `Ecomtik-React-Claude-Master-Update.md` (dated 10 September 2026), Phase A. See "Phase B — Sept 13 audit pass" below for the current pass, and "Deployment and follow-up" for what's next.
+
+## Phase B — Sept 13 audit pass
+
+Source spec: `Ecomtik-Claude-Complete-Website-SEO-Update.md` (dated 13 September 2026), supplied as a fresh direct-site audit (17 findings, A01–A17) plus the same 42 content records (only **B07** actually changed — its CTA link moved from the dead `/services/brand-registry` to `/contact`; every other record is byte-identical to Phase A's). This pass verified all 17 findings against the live code (not the Phase A status doc, which was already stale for some items) and fixed what was still genuinely open.
+
+**Already resolved before this pass** (confirmed in code, no action needed): A01 (`#contact` CTA now routes to `/contact`), A02 for the `/services` directory grid (`ServiceDirectory` already uses `getPublishedRecords`, which filters inactive services), A03 (privacy/terms are real placeholders, not fake policies), A12 (no "risk-free" wording found), A15–A17 (sitemap, routing, real social links confirmed).
+
+**Fixed this pass:**
+- **A02 (the part the spec's own audit missed):** the `/services` hub page's body copy — rendered live via `CoreTemplate` → `MarkdownBody`, not just the card grid — still linked "wholesale support" and "Brand Registry assistance" to the inactive `/services/amazon-wholesale` and `/services/brand-registry`. De-linked to plain text in `src/content/records.json`'s `services` record. Found by scripting a scan of all 42 record bodies for links to the 5 inactive service paths; confirmed zero remaining leaks after the fix.
+- **B07's dead link** — picked up by re-running `scripts/extract-content.mjs` against the new spec file (its only real content change).
+- **A04** — homepage now has `rel=canonical` → `https://ecomtik.com/` (`src/routes/index.tsx`).
+- **A05** — `og:image` (real asset, `hero-amazon-growth.jpg`) and `og:url` (`canonicalOnPublication`) added to `buildRecordHead()` in `src/content/head.ts`, so every registry-driven route gets them in one place; homepage gets the same pair directly.
+- **A09** — homepage title/description changed to "Amazon Growth Agency & Ecommerce Services | Ecomtik", per the spec's recommended framing.
+- **A11** — `/services` hub's `FinalCTA` now links to `/pricing` ("See pricing & engagement options") instead of a self-referential `/services` link.
+- **A13** — the contact form's service `<select>` now submits the stable content ID (e.g. `S02`) as its value, with a concise label (page `title` minus the `| Ecomtik` suffix) as the visible text, instead of the full sentence-style `h1`. `src/lib/contact-server-fn.ts` resolves the ID back to the same readable label via `getRecordById` when composing the notification email, so the email stays human-readable.
+- **A06 (code-only part)** — added `BreadcrumbList` JSON-LD to `ArticleTemplate.tsx` (Home → Blog → article). Visible breadcrumbs already existed via `PageHero`; this adds the matching structured data. The `BlogPosting` schema gate on real `author`/`publishedAt` is untouched — still correctly withheld.
+
+**Still genuinely blocked on business/data input (not faked):**
+- **A06 (data part)** — real author/reviewer names and publication dates for the 12 articles. The new spec's B01 record still ships `author: null`, confirming this wasn't supplied yet.
+- **A07 / A08** — real reporting samples and case evidence for account management/PPC/listing pages and the UAE/KSA market pages. The existing service-page drafts already cover deliverables, scope and FAQs in reasonable depth; further improvement needs actual client evidence, not more prose.
+- **A10** — end-to-end enquiry delivery test. Still needs `GMAIL_USER`/`GMAIL_APP_PASSWORD` (see Phase A's "Inputs or configuration still needed") and a real Cloudflare deploy — `cloudflare:sockets` doesn't exist under local `vite dev`.
+- **A14** — Search Console / Keyword Planner access, needed before claiming any search volume, difficulty or ranking baseline.
+
+**Validation for this pass:** `npx tsc --noEmit` clean; `npx eslint .` — same pre-existing repo-wide CRLF/prettier noise as Phase A, no new real errors from this pass's files; `npx vite build` succeeds. Local `vite dev` + `curl`: homepage and `/services` both show `rel="canonical"`, `og:image`, `og:url`; `/services` HTML no longer contains an `<a href="/services/amazon-wholesale">` or `.../brand-registry`; both those routes still correctly 404; `/blog/amazon-brand-registry-checklist` links to `/contact` (not the dead service) and emits `BreadcrumbList` JSON-LD; `/contact`'s service dropdown renders `<option value="S02">Amazon PPC Management and Advertising</option>`-style markup (ID value, readable label); `/pricing` has its own canonical/og tags.
 
 ## Changes completed
 
