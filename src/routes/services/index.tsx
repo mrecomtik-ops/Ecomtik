@@ -21,7 +21,7 @@ function ServicesPage() {
   return (
     <CoreTemplate record={record} eyebrow="Services" crumbs={[{ label: "Services" }]}>
       <ServiceDirectory />
-      <FinalCTA />
+      <FinalCTA secondaryLabel="See pricing & engagement options" secondaryTo="/pricing" />
     </CoreTemplate>
   );
 }

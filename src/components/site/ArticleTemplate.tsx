@@ -15,6 +15,17 @@ export function ArticleTemplate({ record }: { record: PublishedRecord }) {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://ecomtik.com/" },
+            { "@type": "ListItem", position: 2, name: "Blog", item: "https://ecomtik.com/blog" },
+            { "@type": "ListItem", position: 3, name: h1, item: canonicalOnPublication },
+          ],
+        }}
+      />
       {/* Article schema requires real author/publication-date facts — the
           spec's supplied records leave these null pending an assigned
           reviewer, so no schema is emitted until they're set. */}
