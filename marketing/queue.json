@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "posts": [
+    {
+      "id": "amazon-management-intro",
+      "offerId": "management",
+      "status": "draft",
+      "publishAt": null,
+      "channels": [
+        "facebook",
+        "linkedin"
+      ],
+      "text": "Running an Amazon brand involves more than managing advertising. Listings, inventory, pricing and marketplace operations need to work together. Ecomtik helps brand owners define priorities, coordinate tasks and report on results. Talk to us about managing your Amazon brand.",
+      "imageUrl": null
+    },
+    {
+      "id": "amazon-brand-launch-intro",
+      "offerId": "launch",
+      "status": "draft",
+      "publishAt": null,
+      "channels": [
+        "facebook",
+        "linkedin",
+        "instagram"
+      ],
+      "text": "Planning a new Amazon brand? Start with product research, supply options, landed costs and the requirements of your target marketplace before committing to inventory. Ecomtik can coordinate the stages of creating, launching and managing a new Amazon brand. Contact us about your launch plans.",
+      "imageUrl": null
+    }
+  ]
+}

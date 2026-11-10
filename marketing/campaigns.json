@@ -1,0 +1,39 @@
+{
+  "brand": "Ecomtik",
+  "website": "https://ecomtik.com",
+  "goal": "Qualified clients for Amazon brand management and new Amazon brand launches worldwide.",
+  "offers": [
+    {
+      "id": "management",
+      "name": "Amazon Brand Management",
+      "audience": "Existing Amazon brands needing ongoing management",
+      "landingPage": "https://ecomtik.com/services/amazon-account-management",
+      "cta": "Discuss your Amazon management needs",
+      "topics": [
+        "How to coordinate Amazon PPC, listings and inventory",
+        "What useful Amazon account reporting should include",
+        "When to seek professional Amazon brand management",
+        "Why Amazon marketplace operations need clear responsibilities"
+      ]
+    },
+    {
+      "id": "launch",
+      "name": "New Amazon Brand Launch",
+      "audience": "Entrepreneurs and businesses funding a new Amazon brand",
+      "landingPage": "https://ecomtik.com/contact",
+      "cta": "Discuss starting your Amazon brand",
+      "topics": [
+        "What to check before sourcing a first product",
+        "How to evaluate the landed cost of a proposed Amazon product",
+        "The research, sourcing and brand development launch sequence",
+        "Choosing the right Amazon marketplace for a new brand"
+      ]
+    }
+  ],
+  "guidelines": [
+    "No fabricated case studies or unverifiable results",
+    "No guaranteed sales or profits",
+    "No claims to be an official Amazon partner without evidence",
+    "Every public post requires a reviewed approval"
+  ]
+}
