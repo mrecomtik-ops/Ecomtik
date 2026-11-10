@@ -147,12 +147,19 @@ async function publish() {
   if (process.env.ECOMTIK_PUBLISH_ENABLED !== "true" || process.env.GITHUB_REF !== "refs/heads/main")
     throw Error("Publishing is locked until explicitly enabled on the main branch.");
   let count = 0;
-  for (const post of duePosts().slice(0, 4)) {
+  let processedPostIds = 0;
+  for (const post of duePosts()) {
+    let startedThisPost = false;
     const offer = campaigns.offers.find((o) => o.id === post.offerId);
     for (const channel of post.channels) {
       const title = "[ecomtik-post] " + post.id + " / " + channel;
       const existing = await findIssue(title);
       if (existing) { console.log("Reserved or published already: " + title + " — issue #" + existing.number); continue; }
+      if (!startedThisPost) {
+        if (processedPostIds >= 4) { console.log("Safety cap of 4 new post IDs reached."); return; }
+        processedPostIds++;
+        startedThisPost = true;
+      }
       platformConfig(channel);
       // This reservation is persisted BEFORE publication. Failed/ambiguous calls never auto-retry.
       const issue = await gh("/issues","POST",{title,body:"Status: RESERVED. Check the social page before attempting any manual retry.\nPost: " + post.id + "\nChannel: " + channel});
