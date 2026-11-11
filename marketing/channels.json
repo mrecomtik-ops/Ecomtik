@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "note": "Public identifiers only. Profile URLs do not grant API authorization. No tokens, app secrets, session cookies or private lead data may be committed.",
+  "social": {
+    "facebook": {
+      "url": "https://www.facebook.com/profile.php?id=61591697604837",
+      "accountType": "business_page_confirmed_by_owner",
+      "publicationStatus": "awaiting_authorization",
+      "supportedBy": "Facebook Pages API using an authorized Page access token; requires pages_show_list, pages_read_engagement, pages_manage_posts and appropriate Page task access",
+      "officialPlatform": "Meta",
+      "ownershipVerification": "User confirmed Ecomtik business Page on 2026-11-11; API Page ID and administrative permissions not yet verified"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/ecomtik/",
+      "accountType": "professional_account_unverified",
+      "publicationStatus": "awaiting_authorization",
+      "supportedBy": "Meta Instagram API; requires eligible Professional account, linked assets or supported Instagram Login and publishing scopes",
+      "officialPlatform": "Meta"
+    },
+    "tiktok": {
+      "url": "https://www.tiktok.com/@ecomtikservices",
+      "accountType": "unverified",
+      "publicationStatus": "integration_pending",
+      "supportedBy": "TikTok Content Posting API; developer approval, OAuth video.publish, creator consent, creator settings, verified media URL and audit required for unrestricted public posting",
+      "officialPlatform": "TikTok"
+    },
+    "linkedin": {
+      "url": null,
+      "accountType": "unknown",
+      "publicationStatus": "awaiting_page_url",
+      "supportedBy": "LinkedIn Organization Posts API; organization admin and permissions",
+      "officialPlatform": "LinkedIn"
+    }
+  },
+  "inbound": {
+    "whatsapp": {
+      "numberInternational": "+971561677408",
+      "clickToChatUrl": "https://wa.me/971561677408",
+      "purpose": "Opt-in inbound enquiries and qualified sales conversations; never unsolicited mass messaging"
+    },
+    "email": {
+      "address": "mr.ecomtik@gmail.com",
+      "mailto": "mailto:mr.ecomtik@gmail.com",
+      "purpose": "Inbound sales enquiries and customer contact"
+    }
+  }
+}

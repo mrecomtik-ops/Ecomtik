@@ -1,0 +1,96 @@
+name: Ecomtik Marketing Automation
+on:
+  pull_request:
+    paths:
+      - "marketing/**"
+      - ".github/workflows/ecomtik-marketing.yml"
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        description: "Choose website audit, editorial plan, or approved publishing"
+        required: true
+        default: audit
+        options:
+          - audit
+          - plan
+          - publish
+  schedule:
+    - cron: "17 5 * * *" # 09:17 Dubai, daily (UTC cron)
+permissions:
+  contents: read
+concurrency:
+  group: ecomtik-marketing
+  cancel-in-progress: false
+jobs:
+  validate:
+    name: Validate campaigns and queued posts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node marketing/engine.mjs validate
+      - run: node marketing/test.mjs
+      - run: node marketing/engine.mjs preview
+  plan:
+    name: Build editorial briefs
+    needs: validate
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'plan')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node marketing/engine.mjs plan
+      - run: node marketing/engine.mjs connections
+      - uses: actions/upload-artifact@v4
+        with:
+          name: amazon-client-acquisition-brief
+          path: marketing/output/*.md
+          retention-days: 14
+  audit:
+    name: Check Ecomtik site health
+    needs: validate
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'audit')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node marketing/engine.mjs site
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ecomtik-site-health
+          path: marketing/output/site-health.md
+          if-no-files-found: ignore
+          retention-days: 14
+  publish:
+    name: Publish only approved social posts
+    needs: validate
+    if: github.ref == 'refs/heads/main' && vars.ECOMTIK_PUBLISH_ENABLED == 'true' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'publish'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    env:
+      ECOMTIK_PUBLISH_ENABLED: ${{ vars.ECOMTIK_PUBLISH_ENABLED }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+      META_PAGE_ID: ${{ vars.META_PAGE_ID }}
+      META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+      META_INSTAGRAM_ID: ${{ vars.META_INSTAGRAM_ID }}
+      META_INSTAGRAM_TOKEN: ${{ secrets.META_INSTAGRAM_TOKEN }}
+      LINKEDIN_ORG_URN: ${{ vars.LINKEDIN_ORG_URN }}
+      LINKEDIN_API_VERSION: ${{ vars.LINKEDIN_API_VERSION }}
+      LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node marketing/engine.mjs publish

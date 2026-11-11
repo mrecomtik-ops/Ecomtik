@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "brand": {
+    "name": "Ecomtik",
+    "primary": "#0B1A33",
+    "accent": "#F5A623",
+    "website": "https://ecomtik.com",
+    "tone": "Confident, credible, pragmatic, modern B2B",
+    "safety": "No invented client numbers, sales guarantees, fake dashboard data, fake endorsements or claims of Amazon partnership."
+  },
+  "defaults": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 24,
+    "platforms": [
+      "instagram-reels",
+      "facebook-reels",
+      "tiktok"
+    ],
+    "output": "1080x1920 MP4 with burned-in captions and an editable master",
+    "music": "Licensed upbeat business-electronic soundtrack, no unlicensed commercial recordings",
+    "assets": "Use original Ecomtik brand graphics or licensed/approved visuals. Show generic/fictional screens only, visibly illustrative.",
+    "approval": "Draft / approval needed prior to generation, posting and paid use."
+  },
+  "briefs": [
+    {
+      "id": "amazon-brand-management",
+      "title": "Your Amazon Brand Deserves a Full-Time Growth Team",
+      "audience": "Owners already selling on Amazon who need professional management",
+      "serviceId": "management",
+      "landingUrl": "https://ecomtik.com/services/amazon-account-management",
+      "cta": "Book an Amazon Brand Review",
+      "script": [
+        {
+          "seconds": "0-4",
+          "screen": "Already selling on Amazon?",
+          "visual": "A professional brand owner reviews an abstract, clearly illustrative ecommerce dashboard on a laptop; energetic zoom",
+          "voiceover": "Already selling on Amazon?"
+        },
+        {
+          "seconds": "4-10",
+          "screen": "PPC • Listings • Inventory • Operations",
+          "visual": "Four clean animated tiles, subtle dashboard-inspired graphics, no real account data",
+          "voiceover": "Ads, listings, inventory and operations all need attention."
+        },
+        {
+          "seconds": "10-17",
+          "screen": "One team. A clearer plan.",
+          "visual": "Team collaborating over packaging and analytics with generic illustrative visuals",
+          "voiceover": "Ecomtik helps you coordinate and manage your Amazon brand."
+        },
+        {
+          "seconds": "17-24",
+          "screen": "ECOMTIK | Book Your Brand Review",
+          "visual": "Navy background, amber arrow graphic, Ecomtik brand name, website and short CTA",
+          "voiceover": "Let's review your Amazon growth priorities. Talk to Ecomtik."
+        }
+      ],
+      "caption": "Your Amazon brand deserves a coordinated operating plan. We help brand owners manage their marketplace operations, advertising, listings and growth priorities. Book a review at ecomtik.com. #AmazonSeller #AmazonAccountManagement #EcommerceGrowth"
+    },
+    {
+      "id": "new-amazon-brand-launch",
+      "title": "Start an Amazon Brand the Right Way",
+      "audience": "Entrepreneurs, manufacturers and investors starting a brand on a suitable Amazon marketplace",
+      "serviceId": "launch",
+      "landingUrl": "https://ecomtik.com/contact",
+      "cta": "Plan Your Amazon Brand Launch",
+      "script": [
+        {
+          "seconds": "0-4",
+          "screen": "Thinking of launching on Amazon?",
+          "visual": "Entrepreneur studies fictional product packaging concepts and a world map",
+          "voiceover": "Thinking about launching an Amazon brand?"
+        },
+        {
+          "seconds": "4-10",
+          "screen": "Research → Source → Build",
+          "visual": "Fast transitions across illustrative product demand study, supplier samples and branding mockups",
+          "voiceover": "Start with research, sourcing and brand development."
+        },
+        {
+          "seconds": "10-17",
+          "screen": "Launch → Manage → Improve",
+          "visual": "Clean listing concept on a device and an abstract campaign checklist; no invented performance data",
+          "voiceover": "Then plan the launch and ongoing operations around your chosen marketplace."
+        },
+        {
+          "seconds": "17-24",
+          "screen": "ECOMTIK | Let's Build Your Brand",
+          "visual": "Brand navy backdrop and amber CTA with ecomtik.com/contact",
+          "voiceover": "Ecomtik can guide the process. Let's discuss your launch plan."
+        }
+      ],
+      "caption": "Starting a new Amazon brand? Product selection, sourcing, costs and launch operations should form one coordinated plan. Discuss your project with Ecomtik: ecomtik.com/contact. #AmazonBrandLaunch #PrivateLabel #EcommerceBusiness"
+    }
+  ]
+}
