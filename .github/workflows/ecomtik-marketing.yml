@@ -45,10 +45,11 @@ jobs:
         with:
           node-version: "22"
       - run: node marketing/engine.mjs plan
+      - run: node marketing/engine.mjs connections
       - uses: actions/upload-artifact@v4
         with:
           name: amazon-client-acquisition-brief
-          path: marketing/output/weekly-brief.md
+          path: marketing/output/*.md
           retention-days: 14
   audit:
     name: Check Ecomtik site health
