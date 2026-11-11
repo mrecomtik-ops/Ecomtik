@@ -74,3 +74,18 @@ After merge, GitHub Actions > Ecomtik Marketing Automation > Run workflow: selec
 - Additional pages and platforms when official publishing permissions are available.
 
 Brand rule: no fabricated case studies, guaranteed profits, misleading performance metrics, spam posting, or unverified Amazon partnership claims. This is an integration-ready pilot; social accounts have not yet been connected.
+
+## Supplied Ecomtik channels (11 November 2026)
+
+The account directory lives in `marketing/channels.json` and contains public profile URLs and inbound sales contacts only:
+
+- Facebook: https://www.facebook.com/profile.php?id=61591697604837 — must confirm this is a Facebook **Page** rather than an individual profile; the Page API cannot publish to a personal profile.
+- Instagram: https://www.instagram.com/ecomtik/ — confirm eligible Professional account and authorized Meta API publishing access.
+- TikTok: https://www.tiktok.com/@ecomtikservices — content planning is supported, but automated public posting is **not enabled or implemented**. The TikTok Content Posting API requires a developer app, approved `video.publish` permission, user OAuth authorization, creator-level settings and consent, and an audit to remove private-only restrictions. See https://developers.tiktok.com/docs/en/content-posting-api-get-started .
+- WhatsApp (inbound): https://wa.me/971561677408 . Used as a click-to-chat CTA, not bulk messages or WhatsApp automation.
+- Email (inbound): mr.ecomtik@gmail.com . This is contact information, not access to the inbox or authorization to send bulk marketing.
+- LinkedIn: page URL not yet provided; existing publishing adapter stays unconfigured.
+
+The presence of these URLs **does not connect accounts**. To switch a supported channel to `authorized`, first complete delegated authentication, verify permissions and perform a controlled API test. Keep the publishing flag off until ready. Do not add raw passwords, access tokens, or private message data to this public repository.
+
+Run `node marketing/engine.mjs connections` to produce a local connection status report. GitHub's scheduled editorial run saves the same report as an artifact after the PR is merged.
