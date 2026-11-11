@@ -47,8 +47,8 @@ SOURCE_PAGES = [
  "https://www.pexels.com/video/storage-shelves-packages-shipping-6169087/",
 ]
 (OUT / "footage-sources.txt").write_text(
-    "Pexels stock footage (illustrative actors, not Ecomtik personnel)\\n"+
-    "\\n".join(SOURCE_PAGES)+"\\nLicense: https://www.pexels.com/license/\\n",
+    "Pexels stock footage (illustrative actors, not Ecomtik personnel)\n"+
+    "\n".join(SOURCE_PAGES)+"\nLicense: https://www.pexels.com/license/\n",
     encoding="utf-8"
 )
 
@@ -208,7 +208,7 @@ def finish(segments):
              "-t","5.0","-c:v","libx264","-preset","veryfast","-crf","22",
              "-pix_fmt","yuv420p",str(closing)])
     segment_list=OUT/"segments.txt"
-    segment_list.write_text("".join("file '"+str(p.resolve())+"'\\n" for p in segments+[closing]))
+    segment_list.write_text("".join("file '"+str(p.resolve())+"'\n" for p in segments+[closing]))
     command(["ffmpeg","-hide_banner","-loglevel","error","-y","-f","concat","-safe","0",
              "-i",str(segment_list),"-c","copy",str(FINAL)])
     command(["ffprobe","-v","error","-show_entries","format=duration,size",
