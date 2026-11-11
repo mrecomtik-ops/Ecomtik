@@ -4,10 +4,11 @@
   "social": {
     "facebook": {
       "url": "https://www.facebook.com/profile.php?id=61591697604837",
-      "accountType": "unverified_page_or_profile",
+      "accountType": "business_page_confirmed_by_owner",
       "publicationStatus": "awaiting_authorization",
-      "supportedBy": "Meta Pages API; requires verified Facebook Page and publishing scopes",
-      "officialPlatform": "Meta"
+      "supportedBy": "Facebook Pages API using an authorized Page access token; requires pages_show_list, pages_read_engagement, pages_manage_posts and appropriate Page task access",
+      "officialPlatform": "Meta",
+      "ownershipVerification": "User confirmed Ecomtik business Page on 2026-11-11; API Page ID and administrative permissions not yet verified"
     },
     "instagram": {
       "url": "https://www.instagram.com/ecomtik/",
