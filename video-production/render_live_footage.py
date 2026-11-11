@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw, ImageFont
 import imageio_ffmpeg
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "output"
 OUT.mkdir(exist_ok=True, parents=True)
