@@ -7,12 +7,18 @@ const folder = path.dirname(fileURLToPath(import.meta.url));
 const read = (file) => JSON.parse(fs.readFileSync(path.join(folder, file), "utf8"));
 const campaigns = read("campaigns.json");
 const queue = read("queue.json");
-const validChannels = new Set(["facebook", "instagram", "linkedin"]);
+const channels = read("channels.json");
+const validChannels = new Set(["facebook", "instagram", "linkedin", "tiktok"]);
 
 export function validate(config = campaigns, content = queue) {
   const problems = [];
   const offers = new Set((config.offers || []).map((o) => o.id));
   if (!offers.has("management") || !offers.has("launch")) problems.push("Missing one of the two Amazon service offers.");
+  if (channels.social.facebook.url !== "https://www.facebook.com/profile.php?id=61591697604837" ||
+      channels.social.instagram.url !== "https://www.instagram.com/ecomtik/" ||
+      channels.social.tiktok.url !== "https://www.tiktok.com/@ecomtikservices") problems.push("Unexpected social profile registry values.");
+  if (channels.inbound.whatsapp.clickToChatUrl !== "https://wa.me/971561677408" ||
+      channels.inbound.email.address !== "mr.ecomtik@gmail.com") problems.push("Unexpected inbound contact registry values.");
   const ids = new Set();
   for (const post of content.posts || []) {
     if (!/^[a-z0-9-]+$/.test(post.id || "") || ids.has(post.id)) problems.push("Invalid or duplicate post ID: " + post.id);
@@ -25,6 +31,7 @@ export function validate(config = campaigns, content = queue) {
     if (post.status === "approved" && !post.publishAt) problems.push("Approved post needs scheduled UTC publishAt: " + post.id);
     if (post.imageUrl !== null && (typeof post.imageUrl !== "string" || !/^https:\/\//.test(post.imageUrl))) problems.push("imageUrl must be public HTTPS: " + post.id);
     if (post.status === "approved" && post.channels.includes("instagram") && !post.imageUrl) problems.push("Approved Instagram post needs an imageUrl: " + post.id);
+    if (post.status === "approved" && post.channels.includes("tiktok")) problems.push("TikTok direct publishing not yet implemented or authorized: " + post.id);
   }
   return problems;
 }
@@ -42,7 +49,11 @@ export function editorialBrief(config = campaigns, today = new Date()) {
     }
     output += "\n";
   }
-  return output + "Do not invent testimonials, returns, client results or official Amazon partnerships.\n";
+  output += "## Connected account directory (authorization still pending)\n\n";
+  for (const [platform, item] of Object.entries(channels.social)) output += "- " + platform + ": " + (item.url || "URL needed") + " (status: " + item.publicationStatus + ")\n";
+  output += "\nInbound WhatsApp: " + channels.inbound.whatsapp.clickToChatUrl + "\nInbound email: " + channels.inbound.email.address + "\n";
+  output += "\nTikTok: prepare short-form video concepts as drafts only; official publishing requires API approval and creator consent.\n";
+  return output + "\nDo not invent testimonials, returns, client results or official Amazon partnerships.\n";
 }
 async function siteAudit() {
   const urls = ["/", "/services/amazon-account-management", "/contact", "/robots.txt", "/sitemap.xml"];
@@ -100,6 +111,8 @@ function env(...names) {
   for (const name of names) if (!process.env[name]) throw Error("Missing configuration: " + name);
 }
 function platformConfig(channel) {
+  if (channel === "tiktok") throw Error("TikTok API integration not yet supported. No direct posting.");
+  if (!channels.social[channel] || channels.social[channel].publicationStatus !== "authorized") throw Error("Channel is not yet authorized in marketing/channels.json: " + channel);
   if (channel === "facebook") env("META_GRAPH_VERSION", "META_PAGE_ID", "META_PAGE_TOKEN");
   if (channel === "instagram") env("META_GRAPH_VERSION", "META_INSTAGRAM_ID", "META_INSTAGRAM_TOKEN");
   if (channel === "linkedin") env("LINKEDIN_ORG_URN", "LINKEDIN_ACCESS_TOKEN", "LINKEDIN_API_VERSION");
@@ -134,6 +147,7 @@ async function platformPublish(channel, post, offer) {
     const published = await fetch(base + encodeURIComponent(process.env.META_INSTAGRAM_ID) + "/media_publish",{method:"POST",body:new URLSearchParams({creation_id:container.id,access_token:process.env.META_INSTAGRAM_TOKEN}),signal:AbortSignal.timeout(25000)});
     return (await expectJson(published,"Instagram publish")).id || "published";
   }
+  if (channel !== "linkedin") throw Error("Unsupported publishing destination: " + channel);
   const payload = {author:process.env.LINKEDIN_ORG_URN,commentary:post.text + "\n\n" + offer.landingPage,visibility:"PUBLIC",distribution:{feedDistribution:"MAIN_FEED",targetEntities:[],thirdPartyDistributionChannels:[]},lifecycleState:"PUBLISHED",isReshareDisabledByAuthor:false};
   const response = await fetch("https://api.linkedin.com/rest/posts",{
     method:"POST",
@@ -181,6 +195,15 @@ export async function run(action) {
   if (issues.length) throw Error("Content queue validation failed:\n" + issues.join("\n"));
   if (action === "validate") console.log("Content queue validated (" + queue.posts.length + " posts).");
   else if (action === "plan") {writeReport("weekly-brief.md",editorialBrief());console.log("Editorial brief generated.");}
+  else if (action === "connections") {
+    const lines = ["# Ecomtik channel connection register","", "Status is configuration only: profile URLs are not API authentication.",""];
+    for (const [name, entry] of Object.entries(channels.social)) lines.push("- " + name + ": " + (entry.url || "not supplied") + " | " + entry.publicationStatus);
+    lines.push("", "- WhatsApp (inbound only): " + channels.inbound.whatsapp.clickToChatUrl);
+    lines.push("- Email (inbound only): " + channels.inbound.email.address);
+    lines.push("", "Publishing stays disabled until official OAuth and editorial approval.");
+    writeReport("channel-connections.md",lines.join("\n") + "\n");
+    console.log("Account directory report generated.");
+  }
   else if (action === "site") await siteAudit();
   else if (action === "preview") console.log(JSON.stringify({due:duePosts().map((p) => ({id:p.id,channels:p.channels,publishAt:p.publishAt}))},null,2));
   else if (action === "publish") await publish();
