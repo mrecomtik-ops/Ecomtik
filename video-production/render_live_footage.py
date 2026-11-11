@@ -11,6 +11,8 @@ import urllib.request
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
+import imageio_ffmpeg
+FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
@@ -42,7 +44,7 @@ SOURCE_PAGES = [
  "https://www.pexels.com/video/a-woman-working-in-an-office-5716888/",
  "https://www.pexels.com/video/business-people-having-a-meeting-while-using-laptop-8141304/",
  "https://www.pexels.com/video/woman-using-laptop-at-work-8141342/",
- "https://www.pexels.com/video/man-writing-on-packages-6169414/",
+ "https://www.pexels.com/video/storage-shelves-packages-shipping-6169087/",
 ]
 (OUT / "footage-sources.txt").write_text(
     "Pexels stock footage (illustrative actors, not Ecomtik personnel)\\n"+
@@ -52,6 +54,10 @@ SOURCE_PAGES = [
 
 
 def command(args: list[str]) -> None:
+    if args[0] == "ffprobe":
+        return  # Portable ffmpeg validates inputs during encoding.
+    if args[0] == "ffmpeg":
+        args[0] = FFMPEG
     print("RUN", " ".join(args[:8]), flush=True)
     subprocess.run(args, check=True)
 
