@@ -79,7 +79,7 @@ Brand rule: no fabricated case studies, guaranteed profits, misleading performan
 
 The account directory lives in `marketing/channels.json` and contains public profile URLs and inbound sales contacts only:
 
-- Facebook: https://www.facebook.com/profile.php?id=61591697604837 — must confirm this is a Facebook **Page** rather than an individual profile; the Page API cannot publish to a personal profile.
+- Facebook: https://www.facebook.com/profile.php?id=61591697604837 — **confirmed by the owner to be Ecomtik's business Page**. Page API publishing still needs an authenticated Meta Page access token, Page administration authorization, and permissions such as `pages_show_list`, `pages_read_engagement`, and `pages_manage_posts`. Confirm the Page ID through the authorized Graph API rather than treating the numeric profile URL parameter as a verified API ID.
 - Instagram: https://www.instagram.com/ecomtik/ — confirm eligible Professional account and authorized Meta API publishing access.
 - TikTok: https://www.tiktok.com/@ecomtikservices — content planning is supported, but automated public posting is **not enabled or implemented**. The TikTok Content Posting API requires a developer app, approved `video.publish` permission, user OAuth authorization, creator-level settings and consent, and an audit to remove private-only restrictions. See https://developers.tiktok.com/docs/en/content-posting-api-get-started .
 - WhatsApp (inbound): https://wa.me/971561677408 . Used as a click-to-chat CTA, not bulk messages or WhatsApp automation.
